@@ -2,7 +2,7 @@
     "Project": {
         "Name": "HelloWorld",
         "Stage": "Demo",
-        "Account": "75157*******",
+        "Account": "123456789012",
         "Region": "eu-central-1",
         "Profile": "cdk-v2"
     },
