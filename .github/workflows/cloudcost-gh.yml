@@ -16,7 +16,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: odrori1997/cloudcost-gh-action@v0
+      - uses: odrori1997/cloudcost-gh-action@v0.5.0
         with:
           api_key: lk_live_r8-pC7TeMze8d_c5DE48qAyI
           github_token: ${{ secrets.GITHUB_TOKEN }}
