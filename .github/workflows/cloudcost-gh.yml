@@ -11,6 +11,8 @@ permissions:
 jobs:
   cost-analysis:
     runs-on: ubuntu-latest
+    env:
+      APP_CONFIG: config/app-config-demo.json
     steps:
       - uses: actions/checkout@v4
         with:
@@ -20,4 +22,3 @@ jobs:
         with:
           api_key: lk_live_r8-pC7TeMze8d_c5DE48qAyI
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          app_config: config/app-config-demo.json
