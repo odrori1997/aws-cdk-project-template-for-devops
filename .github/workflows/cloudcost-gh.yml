@@ -1,0 +1,22 @@
+name: CloudCostGH
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  cost-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: odrori1997/cloudcost-gh-action@v0
+        with:
+          api_key: lk_live_r8-pC7TeMze8d_c5DE48qAyI
+          github_token: ${{ secrets.GITHUB_TOKEN }}
