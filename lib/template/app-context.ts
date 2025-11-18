@@ -16,8 +16,8 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const fs = require('fs');
-const env = require('env-var');
+import * as fs from 'fs';
+import * as env from 'env-var';
 import * as cdk from 'aws-cdk-lib';
 
 import { AppConfig } from './app-config';
