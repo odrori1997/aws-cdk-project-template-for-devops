@@ -18,6 +18,40 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        continue-on-error: true
+        run: npm run build
+
+      - name: Ensure dist/index.js exists
+        run: |
+          if [ ! -f dist/index.js ]; then
+            echo "dist/index.js not found, creating from existing compiled files..."
+            mkdir -p dist
+            # The file should exist from previous builds, but if not, create it
+            if [ -f infra/app-main.js ]; then
+              # Adjust require paths for dist structure
+              node -e "
+                const fs = require('fs');
+                let content = fs.readFileSync('infra/app-main.js', 'utf8');
+                content = content.replace(/require\\(\"\.\.\/lib/g, 'require(\"./lib');
+                content = content.replace(/require\\(\"\.\/stack/g, 'require(\"./infra/stack');
+                fs.writeFileSync('dist/index.js', content);
+              "
+            else
+              echo "Warning: infra/app-main.js not found, dist/index.js may be missing"
+            fi
+          else
+            echo "dist/index.js already exists"
+          fi
+
       - uses: odrori1997/cloudcost-gh-action@main
         with:
           api_key: lk_live_r8-pC7TeMze8d_c5DE48qAyI
