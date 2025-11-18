@@ -56,7 +56,9 @@ jobs:
           echo "✅ Build completed successfully"
 
       - name: Print before CloudCost action
-        run: echo "💰 Running CloudCost analysis action..."
+        run: |
+          echo "💰 Running CloudCost analysis action..."
+          echo "CloudCost Action: odrori1997/cloudcost-gh-action@main"
 
       - uses: odrori1997/cloudcost-gh-action@main
         with:
