@@ -28,7 +28,7 @@
         "SampleVpcCloud9": {
             "Name": "SampleVpcCloud9Stack",
 
-            "InstanceType": "t3.small",
+            "InstanceType": "t3.large",
             "IamUser": "your-iam-user-id"
         },
         "SampleVpcEcs": {
