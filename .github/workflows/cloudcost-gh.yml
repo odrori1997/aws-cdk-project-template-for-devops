@@ -13,24 +13,56 @@ jobs:
     runs-on: ubuntu-latest
     env:
       APP_CONFIG: config/app-config-demo.json
+      ACTIONS_STEP_DEBUG: true
     steps:
+      - name: Print test log message
+        run: echo "🚀 Starting CloudCost GitHub Actions workflow - Test log message"
+
+      - name: Dump GitHub context (safe fields only)
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "GitHub Context Information:"
+          echo "$GITHUB_CONTEXT" | jq '{event_name, ref, sha, repository, workflow, actor}'
+
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Print checkout completion
+        run: echo "✅ Repository checkout completed successfully"
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
+      - name: Print Node.js setup
+        run: |
+          echo "✅ Node.js setup completed"
+          node --version
+          npm --version
+
       - name: Install dependencies
-        run: npm ci
+        run: |
+          echo "📦 Installing dependencies..."
+          npm ci
+          echo "✅ Dependencies installed successfully"
 
       - name: Build project
-        run: npm run build
+        run: |
+          echo "🔨 Building project..."
+          npm run build
+          echo "✅ Build completed successfully"
+
+      - name: Print before CloudCost action
+        run: echo "💰 Running CloudCost analysis action..."
 
       - uses: odrori1997/cloudcost-gh-action@main
         with:
           api_key: lk_live_r8-pC7TeMze8d_c5DE48qAyI
           github_token: ${{ secrets.GITHUB_TOKEN }}
           node_version: 18
+
+      - name: Print workflow completion
+        run: echo "🎉 CloudCost workflow completed successfully"
