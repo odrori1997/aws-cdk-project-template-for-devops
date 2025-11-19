@@ -43,3 +43,4 @@ jobs:
           api_key: lk_live_r8-pC7TeMze8d_c5DE48qAyI
           github_token: ${{ secrets.GITHUB_TOKEN }}
           node_version: 18
+          analyzer_version: v0.2.0
