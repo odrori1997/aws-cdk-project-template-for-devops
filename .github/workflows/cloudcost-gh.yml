@@ -33,7 +33,7 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - uses: odrori1997/cloudcost-gh-action@v0.12.2
+      - uses: odrori1997/cloudcost-gh-action@main
         env:
           ACTIONS_STEP_DEBUG: true
           ACTIONS_RUNNER_DEBUG: true
