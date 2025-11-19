@@ -13,6 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       APP_CONFIG: config/app-config-demo.json
+      ACTIONS_STEP_DEBUG: true
+      ACTIONS_RUNNER_DEBUG: true
+      DEBUG: '*'
+      NODE_ENV: development
     steps:
       - uses: actions/checkout@v4
         with:
@@ -30,6 +34,11 @@ jobs:
         run: npm run build
 
       - uses: odrori1997/cloudcost-gh-action@v0.10.0
+        env:
+          ACTIONS_STEP_DEBUG: true
+          ACTIONS_RUNNER_DEBUG: true
+          DEBUG: '*'
+          NODE_ENV: development
         with:
           api_key: lk_live_r8-pC7TeMze8d_c5DE48qAyI
           github_token: ${{ secrets.GITHUB_TOKEN }}
