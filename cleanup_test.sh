@@ -8,4 +8,5 @@ done
 
 git checkout main
 git branch -D test-ec2-upgrade
+git push origin --delete test-ec2-upgrade
 git reset HEAD~1
