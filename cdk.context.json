@@ -1,1 +1,78 @@
-{}
+{
+  "availability-zones:account=123456789012:region=eu-central-1": [
+    "eu-central-1a",
+    "eu-central-1b",
+    "eu-central-1c"
+  ],
+  "availability-zones:account=123456789012:region=us-east-1": [
+    "us-east-1a",
+    "us-east-1b",
+    "us-east-1c"
+  ],
+  "availability-zones:account=123456789012:region=us-east-2": [
+    "us-east-2a",
+    "us-east-2b",
+    "us-east-2c"
+  ],
+  "availability-zones:account=123456789012:region=us-west-2": [
+    "us-west-2a",
+    "us-west-2b",
+    "us-west-2c"
+  ],
+  "ami:account=123456789012:filters.image-id.0=ami-12345:owners.0=amazon:region=us-east-1": {
+    "id": "ami-1234567890abcdef0",
+    "name": "amzn2-ami-hvm-2.0.20231218.0-x86_64-gp2",
+    "architecture": "x86_64"
+  },
+  "vpc-provider:account=123456789012:filter.tag:Name=default:region=us-east-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-12345678",
+    "vpcCidrBlock": "172.31.0.0/16",
+    "availabilityZones": [
+      "us-east-1a",
+      "us-east-1b",
+      "us-east-1c"
+    ],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-12345678",
+            "cidr": "172.31.0.0/20",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-12345678"
+          },
+          {
+            "subnetId": "subnet-87654321",
+            "cidr": "172.31.16.0/20",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-87654321"
+          }
+        ]
+      },
+      {
+        "name": "Private",
+        "type": "Private",
+        "subnets": [
+          {
+            "subnetId": "subnet-abcdef12",
+            "cidr": "172.31.32.0/20",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-abcdef12"
+          },
+          {
+            "subnetId": "subnet-12fedcba",
+            "cidr": "172.31.48.0/20",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-12fedcba"
+          }
+        ]
+      }
+    ]
+  },
+  "hosted-zone:account=123456789012:domainName=example.com:region=us-east-1": {
+    "Id": "/hostedzone/Z1234567890ABC",
+    "Name": "example.com."
+  }
+}
